@@ -35,7 +35,7 @@
 
 1. **克隆项目**
 ```bash
-git clone https://github.com/yourusername/Qwen3-Livetranslate.git
+git clone https://github.com/reknottycat/Qwen3-Livetranslate.git
 cd Qwen3-Livetranslate
 ```
 
