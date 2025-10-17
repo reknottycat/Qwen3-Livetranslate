@@ -136,12 +136,20 @@ python start_server.py
 
 ## 🛠️ 高级配置
 
-### 自定义语言模型
-可以在 `web_translate_client.py` 中修改以下参数：
+### 自定义模型与调用地址
+本项目使用阿里云 DashScope 实时服务，默认模型为 `qwen3-livetranslate-flash-realtime`。
+
+如需更换模型，请在 `web_translate_client.py` 的 `WebTranslateClient.__init__` 中，修改连接地址中 `model=` 的取值：
 ```python
-# 语言模型配置
-MODEL_ID = "qwen-audio-turbo"  # 可选其他支持的模型
+# 在 WebTranslateClient.__init__ 中设置模型
+self.api_url = "wss://dashscope.aliyuncs.com/api-ws/v1/realtime?model=qwen3-livetranslate-flash-realtime"
+
+# 示例：切换为其他可用的实时模型（请根据账号权限与官方文档确认）
+new_model = "qwen3-livetranslate-pro-realtime"
+self.api_url = f"wss://dashscope.aliyuncs.com/api-ws/v1/realtime?model={new_model}"
 ```
+
+注意：当前客户端未使用名为 `MODEL_ID` 的变量，该示例已过时，请勿参考。
 
 ### 调整WebSocket参数
 在 `web_server.py` 中可以修改以下参数：
@@ -176,7 +184,7 @@ WEBSOCKET_TIMEOUT = 60   # 超时时间（秒）
 
 如有任何问题或建议，请通过以下方式联系我们：
 
-- GitHub Issues: [提交问题](https://github.com/yourusername/Qwen3-Livetranslate/issues)
+- GitHub Issues: [提交问题](https://github.com/reknottycat/Qwen3-Livetranslate/issues)
 - 电子邮件: your.email@example.com
 
 ---
